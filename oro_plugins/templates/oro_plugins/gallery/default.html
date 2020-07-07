@@ -1,0 +1,17 @@
+{% load cms_tags static thumbnail %}
+
+<h3>Foobar</h3>
+<h3>{{ instance.folder.name }}</h3>
+
+{% for file in instance.folder.files %}
+
+{% if file.extension in "jpg,jpeg,png,gif,webp" %}
+
+<!-- show files from subfolder -->
+<img src='{% thumbnail file 200x200 crop=True %}' 
+  alt="{{ file.default_alt_text }}" 
+  title="{{ file.default_alt_text }}" />
+
+{% endif %}
+
+{% endfor %}
